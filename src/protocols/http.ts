@@ -1,8 +1,8 @@
 export interface HttpResponse {
-    status: number,
-    body: any
+  status: number,
+  body: any
 };
 
 export interface HttpRequest<T> {
-    body?: T,
+  body?: T,
 };

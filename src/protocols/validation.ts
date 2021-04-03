@@ -1,3 +1,3 @@
 export interface Validation<T> {
-    validation: ( body: T ) => ( null | string[])
+  validation: ( body: T ) => ( null | string[])
 }
