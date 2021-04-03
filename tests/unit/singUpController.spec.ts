@@ -13,6 +13,27 @@ const makeSut = () => {
 }
 
 describe('Person Controller', () => {
+
+  test('Should call validation with correct values', async () => {
+    const { sut, singUpvalidatorStub } = makeSut();
+    const validationSpy = jest.spyOn(singUpvalidatorStub, "validation");
+    const httpRequest = {
+      body: {
+        name: 'any_name',
+        cpf: 'any_cpf',
+        age: 27,
+        email: 'any_email'
+      }
+    }
+    const httpResponse = await sut.handle(httpRequest);
+    expect(validationSpy).toHaveBeenCalledWith({
+      name: 'any_name',
+      cpf: 'any_cpf',
+      age: 27,
+      email: 'any_email'
+    });
+  });
+
   test('Should return 400 if name is not provided', async () => {
     const { sut, singUpvalidatorStub } = makeSut();
     const validationSpy = jest.spyOn(singUpvalidatorStub, "validation");
