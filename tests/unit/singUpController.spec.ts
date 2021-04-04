@@ -39,7 +39,7 @@ describe('Person Controller', () => {
   test('Should return 500 if validation throw  Error', async () => {
     const { sut, singUpvalidatorStub } = makeSut();
     const validationSpy = jest.spyOn(singUpvalidatorStub, "validation");
-    validationSpy.mockImplementationOnce((body) => {  throw 12; });
+    validationSpy.mockImplementationOnce(() => {  throw new Error(); });
     const httpRequest = {
       body: {
         name: 'any_name',
