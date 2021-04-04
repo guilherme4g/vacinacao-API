@@ -4,17 +4,23 @@ import { SingUpvalidator } from "./SignUpValidator";
 
 export class SignUpPersonController implements Controller {
     
-    constructor (private singUpvalidator: SingUpvalidator){}
+  constructor (private singUpvalidator: SingUpvalidator){}
 
-    async handle(httpRequest: HttpRequest<any>) : Promise<HttpResponse> {
-        
-        const errors = this.singUpvalidator.validation(httpRequest.body);
-        
-        if(errors) {
-            return {
-                status: 400,
-                body: errors
-            }
+  async handle(httpRequest: HttpRequest<any>) : Promise<HttpResponse> {
+    try {
+      const errors = this.singUpvalidator.validation(httpRequest.body);
+    
+      if(errors) {
+        return {
+          status: 400,
+          body: errors
         }
+      } 
+    } catch (error) {
+      return {
+        status: 500,
+        body: 'Internal Server Error'
+      }
     }
+  }
 }
