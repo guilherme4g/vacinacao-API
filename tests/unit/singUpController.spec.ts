@@ -33,4 +33,21 @@ describe('Person Controller', () => {
       email: 'any_email'
     });
   });
+
+  test('Should return 500 if validation throw  Error', async () => {
+    const { sut, singUpvalidatorStub } = makeSut();
+    const validationSpy = jest.spyOn(singUpvalidatorStub, "validation");
+    validationSpy.mockImplementationOnce((body) => {  throw 12; });
+    const httpRequest = {
+      body: {
+        name: 'any_name',
+        cpf: 'any_cpf',
+        age: 27,
+        email: 'any_email'
+      }
+    }
+    const httpResponse = await sut.handle(httpRequest);
+    expect(httpResponse.status).toBe(500);
+    expect(httpResponse.body).toContain('Internal Server Error');
+  });
 });
