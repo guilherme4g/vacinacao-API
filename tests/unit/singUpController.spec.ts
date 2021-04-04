@@ -48,7 +48,7 @@ describe('Person Controller', () => {
     }
     const httpResponse = await sut.handle(httpRequest);
     expect(httpResponse.status).toBe(500);
-    expect(httpResponse.body).toContain('Internal Server Error');
+    expect(httpResponse.body).toBe('Internal Server Error');
   });
 
   test('Should return 400 if any field is incorrecty', async () => {
