@@ -7,6 +7,6 @@ export interface AddPersonModel {
   email: string
 }
 
-export interface Addperson {
-  add (person: AddPersonModel): Person;
+export interface AddPerson {
+  add (person: AddPersonModel): Promise<Person>;
 };
