@@ -22,7 +22,7 @@
 
  <h3> Objetivo </h3>
  <p>
-     Criar uma API Rest usando TDD com alguns conceitos de arquitetura limpa e padroões de projeto
+     Criar uma API Rest usando TDD e alguns conceitos de arquitetura limpa e padrões de projeto que aprendi
      no curso <a href="https://www.udemy.com/course/tdd-com-mango/ "> NodeJs, Typescript, TDD, DDD, Clean Architecture e SOLID </a>.
  </p>
 
